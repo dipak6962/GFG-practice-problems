@@ -12,17 +12,17 @@ class Solution
     //Function to find the maximum occurring character in a string.
     char getMaxOccuringChar(string str)
     {
-        map<char,int>mp;
+        vector<int>mp(26,0);
         for(auto i:str){
-            mp[i]++;
+            mp[i-'a']++;
         }
         int maxi=0;
         char ans;
-        for(auto i:mp){
-            if(maxi<i.second){
-                ans=i.first;
-                maxi=i.second;
-            }
+        for(int i=0;i<26;i++){
+            if(maxi<mp[i]){
+                maxi=mp[i];
+                ans='a'+i;
+                }
         }
         return ans;
         // Your code here
